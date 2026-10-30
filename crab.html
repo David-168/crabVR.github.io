@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen Plus</title>
+  <script type="module"> console.log('index-html Tag 00.02!'); </script>
+<!--
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4/face_mesh.js" crossorigin="anonymous"></script>
+  <script type="module"> console.log('index-html Tag 00.03 !'); </script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js"
+  crossorigin="anonymous"></script>
+-->
+  <style>
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+    }
+
+    #progress-wrapper {
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      z-index: 1000;
+    }
+
+    #loading-text {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      color: rgb(177, 206, 177);;
+      /* Change to black if your background is light */
+      margin-bottom: 36px;
+    }
+
+    #progress-container {
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 10px;
+      background: #eee;
+      border-radius: 5px;
+      z-index: 1000;
+      /* Ensure it stays above the A-Frame canvas */
+    }
+
+    #progress-bar {
+      height: 100%;
+      background: hsl(102, 21%, 82%);
+      width: 0%;
+      border-radius: 5px;
+    }
+
+    p {
+      position: fixed;
+      /* Now the <p> element is part of the stacking context */
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 10px;
+      background: #eee;
+      border-radius: 5px;
+      z-index: 1000;
+      /* This makes the paragraph appear on top of box1 */
+    }
+  </style>
+</head>
+
+<body>
+  <script type="module">
+    console.log('index-html tag030.01!!');
+  </script>
+
+  <script type="module"> console.log('index-html tag031!!'); </script>
+
+  <video class="input_video" style="display: none;"></video>
+  <script type="module"> console.log('index-html tag032!!'); </script>
+  <!-- Progress Bar -->
+  <div id="progress-wrapper">
+    <div id="loading-text">Loading...</div>
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+  </div>
+  <a-scene id="scene" background="color: #eee">
+
+    <a-entity id="rig">
+    
+      <!-- look-controls only -->
+      <a-entity id="look" look-controls>
+        <!-- actual rendering camera -->
+        <a-entity id="renderCam" camera zeneyetracking="uploadUIEnabled: true;">
+        </a-entity>
+      </a-entity>   
+    </a-entity>
+<!--
+    <a-entity id="gltfloader1"
+      zengltfloader="url:cutegirl_g1-2.glb;
+                            position: -0.0 -1.5 -0.30; rotation: 0 180 0; scale: 1.00 1.00 1.00; progressBar: #progress-bar; progressContainer: #progress-container; uploadUIEnabled: true ;loadingText: #loading-text;camera:#renderCam"></a-entity>
+  -->      
+    <a-entity id="splatloader" splat="url:daniel-roth-jdEYnf70FEM-unsplash.ply ; position: 0.0 0.0 0.15; rotation: 180 0 0; scale: 0.8 0.8 0.8; 
+     progressBar: #progress-bar; progressContainer: #progress-container; loadingText: #loading-text; uploadUIEnabled: true;fileSize:66061086"></a-entity>
+  
+
+  </a-scene>
+
+  <script src="zenplusV10.bundle.js"></script>
+
+</body>
+
+</html>
