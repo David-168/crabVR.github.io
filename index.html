@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Scrollable container for links */
+        .scroll-container {
+            width: 100%;
+            height: 100vh;
+            /* Set the height of the container */
+            border: 1px solid #000;
+            overflow-y: auto;
+            /* Enables vertical scrolling */
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        /* Style for each link */
+        .scroll-container a {
+            display: block;
+            /* Makes each link take up the whole width */
+            padding: 10px;
+            background-color: hsl(100, 29%, 94%);
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for links */
+        .scroll-container a:hover {
+            background-color:  hsl(102, 21%, 82%);
+        }
+
+        /* add for the image container and overlay text */
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-container img {
+            display: block;
+            width: 100%;
+        }
+
+        .overlay-text {
+            position: absolute;
+            bottom: 10px;
+            /* Distance from bottom */
+            left: 10px;
+            /* Distance from left */
+            transform: none;
+            color: hsl(300, 4%, 85%);
+            font-family: "Courier New", monospace;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px black;
+            pointer-events: none;
+            /* Optional: clicking the text still clicks the link */
+        }
+    </style>
+</head>
+
+<body>
+    <p id="os"></p>
+
+    <script>
+        const ua = navigator.userAgent;
+
+        let os = "Unknown";
+        let aborttag = false;
+
+        if (/Windows/i.test(ua)) {
+            os = "Windows";
+        } else if (/Android/i.test(ua)) {
+            os = "Android";
+        } else if (/iPhone|iPad|iPod/i.test(ua)) {
+            os = "iOS";
+        } else if (/Mac OS X/i.test(ua)) {
+            os = "macOS";
+        } else if (/Linux/i.test(ua)) {
+            os = "Linux";
+        }
+
+        console.log("Index init tag 0 os:", os);
+        if ((os == "macOS") || (os == "Linux") || (os == "Windows")) {
+            document.body.innerHTML = `
+<div id="windows-block" style="
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 20px;
+">
+  <img
+    src="adobe-express-qr-code.png"
+    alt="Windows detected"
+    style="
+      max-width: 40vw;
+      max-height: 60vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    "
+  >
+  <p>Use your phone to play this app</p>
+</div>
+
+      `;
+            ///  throw new Error("Stop execution");
+            aborttag = true
+            console.log("Index init tag 1 ", ua);
+        }
+
+    </script>
+
+    <div class="scroll-container">
+        <a href="crab.html" class="fullscreenLink" target="_blank" rel="noopener">
+            <div class="image-container">
+                <img src="icon.jpg" alt="Image">
+                <span class="overlay-text">Click me!</span>
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>
